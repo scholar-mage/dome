@@ -66,6 +66,7 @@
 #include "engine/audio.c"
 #include "engine/image.c"
 #include "engine/point.c"
+#include "engine/mouse.c"
 #include "vm.c"
 
 int main(int argc, char* args[])

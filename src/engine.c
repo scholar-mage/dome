@@ -100,6 +100,8 @@ ENGINE_init(ENGINE* engine) {
   }
   SDL_RenderSetLogicalSize(engine->renderer, GAME_WIDTH, GAME_HEIGHT);
 
+  SDL_ShowCursor(SDL_DISABLE);
+
   engine->texture = SDL_CreateTexture(engine->renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, GAME_WIDTH, GAME_HEIGHT);
   if (engine->texture == NULL) {
     result = EXIT_FAILURE;
@@ -470,3 +472,12 @@ ENGINE_getKeyState(ENGINE* engine, char* keyName) {
   uint8_t* state = SDL_GetKeyboardState(NULL);
   return state[scancode];
 }
+
+internal void
+ENGINE_getMouseState(ENGINE* engine, int32_t* x, int32_t* y, bool* left, bool* middle, bool* right) {
+    uint32_t state = SDL_GetMouseState(x, y);
+    *left = (state & SDL_BUTTON(SDL_BUTTON_LEFT)) != 0;
+    *middle = (state & SDL_BUTTON(SDL_BUTTON_MIDDLE)) != 0;
+    *right = (state & SDL_BUTTON(SDL_BUTTON_RIGHT)) != 0;
+}
+
