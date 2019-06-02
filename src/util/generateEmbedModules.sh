@@ -6,3 +6,4 @@ gcc embed.c -o embed -std=c99
 ./embed ../engine/io.wren ioModule ../engine/io.wren.inc
 ./embed ../engine/audio.wren audioModule ../engine/audio.wren.inc
 ./embed ../engine/point.wren pointModule ../engine/point.wren.inc
+./embed ../engine/game.wren gameModule ../engine/game.wren.inc

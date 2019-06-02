@@ -4,6 +4,7 @@
 #include "init.wren.inc"
 #include "input.wren.inc"
 #include "io.wren.inc"
+#include "game.wren.inc"
 
 
 typedef struct ModuleMapNode_t {
@@ -64,4 +65,5 @@ ModuleMap_init(ModuleMap* map) {
   ModuleMap_add(map, "graphics", graphicsModule);
   ModuleMap_add(map, "audio", audioModule);
   ModuleMap_add(map, "point", pointModule);
+  ModuleMap_add(map, "game", gameModule);
 }

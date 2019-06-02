@@ -228,6 +228,8 @@ int main(int argc, char* args[])
             printf("Event code %i\n", event.user.code);
             if (event.user.code == EVENT_LOAD_FILE) {
               FILESYSTEM_loadEventComplete(&event);
+            } else if (event.user.code == EVENT_GAME_EXIT) {
+              running = false;
             }
           }
       }

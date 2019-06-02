@@ -2,6 +2,7 @@ import "input" for Keyboard
 import "graphics" for Canvas, Color, ImageData, Point
 import "audio" for AudioEngine
 import "random" for Random
+import "game" for Exit
 import "./test"
 
 import "io" for FileSystem
@@ -366,6 +367,8 @@ class GameOverState {
       if (__hold > 4) {
         __next = MainGame
       }
+    } else if(Keyboard.isKeyDown("q")) {
+        Exit.exit
     } else {
       __hold = 0
     }

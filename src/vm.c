@@ -44,6 +44,15 @@ VM_bind_foreign_class(WrenVM* vm, const char* module, const char* className) {
   return methods;
 }
 
+internal void SYS_exit(WrenVM* vm) {
+  SDL_Event event;
+  SDL_memset(&event, 0, sizeof(event));
+  event.type = ENGINE_EVENT_TYPE;
+  event.user.code = EVENT_GAME_EXIT;
+  event.user.data1 = NULL;
+  event.user.data2 = NULL;
+  SDL_PushEvent(&event);
+}
 
 internal void INPUT_is_key_down(WrenVM* vm) {
   ENGINE* engine = (ENGINE*)wrenGetUserData(vm);
@@ -251,6 +260,9 @@ internal WrenVM* VM_create(ENGINE* engine) {
   MAP_add(&engine->fnMap, "point", "Point", "y", false, POINT_getY);
   MAP_add(&engine->fnMap, "point", "Point", "x=(_)", false, POINT_setX);
   MAP_add(&engine->fnMap, "point", "Point", "y=(_)", false, POINT_setY);
+
+  MAP_add(&engine->fnMap, "game", "Exit", "exit", true, SYS_exit);
+
   return vm;
 }
 
